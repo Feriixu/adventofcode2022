@@ -4,6 +4,7 @@ use std::time::Instant;
 mod day1;
 mod day2;
 mod day3;
+mod day4;
 
 fn main() {
     // Start perf counter
@@ -20,6 +21,10 @@ fn main() {
     println!("---------- Day 3 ----------");
     println!("Part 1: {}", day3::part1(read_to_string("input/day3/input.txt").unwrap()));
     println!("Part 2: {}", day3::part2(read_to_string("input/day3/input.txt").unwrap()));
+
+    println!("---------- Day 4 ----------");
+    println!("Part 1: {}", day4::part1(read_to_string("input/day4/input.txt").unwrap()));
+    println!("Part 2: {}", day4::part2(read_to_string("input/day4/input.txt").unwrap()));
 
     // Print perf counter
     println!("Time: {}ms", start.elapsed().as_secs_f64() * 1000.0);
