@@ -33,7 +33,7 @@ pub fn part2(input: String) -> i32 {
 }
 
 mod tests {
-    use super::*;
+    use super::{part1, part2};
 
     #[test]
     fn test_part1() {
