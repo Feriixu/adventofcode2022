@@ -1,7 +1,7 @@
+use itertools::Itertools;
 use std::cmp::Ordering;
 use std::ops::Add;
 use std::str::FromStr;
-use itertools::Itertools;
 use strum::EnumString;
 
 #[derive(EnumString, PartialEq, Debug, Copy, Clone)]
@@ -36,23 +36,17 @@ impl Add<Action> for Shape {
 
     fn add(self, rhs: Action) -> Self::Output {
         match rhs {
-            Action::Loose => {
-                match self {
-                    Shape::Rock => Shape::Scissors,
-                    Shape::Paper => Shape::Rock,
-                    Shape::Scissors => Shape::Paper,
-                }
-            }
-            Action::Draw => {
-                self
-            }
-            Action::Win => {
-                match self {
-                    Shape::Rock => Shape::Paper,
-                    Shape::Paper => Shape::Scissors,
-                    Shape::Scissors => Shape::Rock,
-                }
-            }
+            Action::Loose => match self {
+                Shape::Rock => Shape::Scissors,
+                Shape::Paper => Shape::Rock,
+                Shape::Scissors => Shape::Paper,
+            },
+            Action::Draw => self,
+            Action::Win => match self {
+                Shape::Rock => Shape::Paper,
+                Shape::Paper => Shape::Scissors,
+                Shape::Scissors => Shape::Rock,
+            },
         }
     }
 }
@@ -82,7 +76,11 @@ pub fn part1(input: String) -> u64 {
     input
         .lines()
         .map(|line| {
-            let (opponent, player) = line.split_whitespace().map(|shape| Shape::from_str(shape).unwrap()).collect_tuple().unwrap();
+            let (opponent, player) = line
+                .split_whitespace()
+                .map(|shape| Shape::from_str(shape).unwrap())
+                .collect_tuple()
+                .unwrap();
             player as u64 + Action::from(player.partial_cmp(&opponent).unwrap()) as u64
         })
         .sum()
@@ -99,7 +97,6 @@ pub fn part2(input: String) -> u64 {
             player as u64 + action as u64
         })
         .sum()
-
 }
 
 mod tests {
@@ -108,14 +105,16 @@ mod tests {
     #[test]
     fn test_part1() {
         // Load the example input
-        let input = std::fs::read_to_string("input/day2/example.txt").expect("Can't load example file");
+        let input =
+            std::fs::read_to_string("input/day2/example.txt").expect("Can't load example file");
         assert_eq!(part1(input), 15);
     }
 
     #[test]
     fn test_part2() {
         // Load the example input
-        let input = std::fs::read_to_string("input/day2/example.txt").expect("Can't load example file");
+        let input =
+            std::fs::read_to_string("input/day2/example.txt").expect("Can't load example file");
         assert_eq!(part2(input), 12);
     }
 }
