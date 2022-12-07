@@ -6,6 +6,7 @@ mod day2;
 mod day3;
 mod day4;
 mod day6;
+mod day7;
 
 fn main() {
     // Start perf counter
@@ -30,6 +31,10 @@ fn main() {
     println!("---------- Day 6 ----------");
     println!("Part 1: {}", day6::part1(read_to_string("input/day6/input.txt").unwrap()));
     println!("Part 2: {}", day6::part2(read_to_string("input/day6/input.txt").unwrap()));
+
+    println!("---------- Day 7 ----------");
+    println!("Part 1: {}", day7::part1(read_to_string("input/day7/input.txt").unwrap()));
+    println!("Part 2: {}", day7::part2(read_to_string("input/day7/input.txt").unwrap()));
 
     // Print perf counter
     println!("Time: {}ms", start.elapsed().as_secs_f64() * 1000.0);
