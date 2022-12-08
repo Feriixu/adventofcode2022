@@ -9,6 +9,7 @@ mod day4;
 mod day5;
 mod day6;
 mod day7;
+mod day8;
 
 fn main() {
     // Start perf counter
@@ -110,6 +111,16 @@ fn main() {
             read_to_string("input/day5/input_instructions.txt").unwrap(),
             stacks
         )
+    );
+
+    println!("---------- Day 8 ----------");
+    println!(
+        "Part 1: {}",
+        day8::part1(read_to_string("input/day8/input.txt").unwrap())
+    );
+    println!(
+        "Part 2: {}",
+        day8::part2(read_to_string("input/day8/input.txt").unwrap())
     );
 
     // Print perf counter
