@@ -12,7 +12,7 @@ pub fn part1(input: String) -> usize {
     // If a tree is surrounded by trees of smaller height in any direction, it is not visible
     let trees = parse_input(input);
     let mut visible_trees = trees.len() * trees[0].len();
-    dbg!(visible_trees);
+    // dbg!(visible_trees);
     for x in 1..(trees.len()-1) {
         for y in 1..(trees[0].len()-1) {
             let this_tree = trees[x][y];
